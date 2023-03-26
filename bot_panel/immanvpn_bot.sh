@@ -332,7 +332,6 @@ return 0
 
 bug_func() {
     msg="Digi\nAddress : <code>162.159.134.61</code>\nHost : domain\n\n"
-    msg+="Umobile\nAddress : <code>wap.u.com.my.domain</code>\nHost : <code>wap.u.com.my</code>\n\n"
     msg+="Unifi\nAddress : <code>playtv.unifi.com.my.domain</code>\nHost : <code>playtv.unifi.com.my</code>\nSNI : <code>playtv.unifi.com.my</code>\n\n"
     msg+="Maxis TV\nAddress : <code>sub.viu.com.domain</code>\nHost : <code>sub.viu.com</code>\n\n"
     msg+="YES4G/5G\nAddress : <code>104.17.113.188</code>\nHost : <code>www.who.int</code>\nPath : <code>wss://domain/vlessws</code>\n\n"
@@ -4205,7 +4204,7 @@ cat > /etc/shadowsocks-libev/$userna-tls.json<<END
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4220,7 +4219,7 @@ cat > /etc/shadowsocks-libev/$userna-http.json <<-END
     "server":"0.0.0.0",
     "server_port":$http,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4289,7 +4288,7 @@ cat > /etc/shadowsocks-libev/$userna-tls.json<<END
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4304,7 +4303,7 @@ cat > /etc/shadowsocks-libev/$userna-http.json <<-END
     "server":"0.0.0.0",
     "server_port":$http,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4394,7 +4393,7 @@ cat > /etc/shadowsocks-libev/$userna-tls.json<<END
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4409,7 +4408,7 @@ cat > /etc/shadowsocks-libev/$userna-http.json <<-END
     "server":"0.0.0.0",
     "server_port":$http,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4479,7 +4478,7 @@ cat > /etc/shadowsocks-libev/$userna-tls.json<<END
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4494,7 +4493,7 @@ cat > /etc/shadowsocks-libev/$userna-http.json <<-END
     "server":"0.0.0.0",
     "server_port":$http,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4665,7 +4664,7 @@ cat > /etc/shadowsocks-libev/$userna-tls.json<<END
     "server":"0.0.0.0",
     "server_port":$tls,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -4680,7 +4679,7 @@ cat > /etc/shadowsocks-libev/$userna-http.json <<-END
     "server":"0.0.0.0",
     "server_port":$http,
     "password":"$userna",
-    "timeout":90,
+    "timeout":60,
     "method":"aes-256-cfb",
     "fast_open":true,
     "no_delay":true,
@@ -5856,7 +5855,7 @@ $userna:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-l2tp"
 
 local env_msg
@@ -5902,7 +5901,7 @@ $userna:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-l2tp"
 
 local env_msg
@@ -5947,7 +5946,7 @@ $userna:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-l2tp"
 
 local env_msg
@@ -5994,7 +5993,7 @@ $userna:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-l2tp"
 
 local env_msg
@@ -6038,7 +6037,7 @@ func_del_l2tp() {
         sed -i '/^"'"$userna"'" l2tpd/d' /etc/ppp/chap-secrets
         sed -i '/^'"$userna"':\$1\$/d' /etc/ipsec.d/passwd
         sed -i "/^### $userna $exp/d" /var/lib/scrz-prem/data-user-l2tp
-        chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+        chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
         datata=$(find /etc/.maAsiss/ -name $userna)
         for accc in "${datata[@]}"
         do
@@ -6060,7 +6059,7 @@ func_del_l2tp() {
         sed -i '/^"'"$userna"'" l2tpd/d' /etc/ppp/chap-secrets
         sed -i '/^'"$userna"':\$1\$/d' /etc/ipsec.d/passwd
         sed -i "/^### $userna $exp/d" /var/lib/scrz-prem/data-user-l2tp
-        chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+        chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
         rm -f /etc/.maAsiss/db_reseller/${message_from_id}/user_l2tp/$userna
         rm -f /etc/.maAsiss/info-user-l2tp/$userna
         systemctl restart l2tpd > /dev/null 2>&1
@@ -6120,7 +6119,7 @@ exp=\$(grep -E "^###" /var/lib/scrz-prem/data-user-l2tp | cut -d ' ' -f 3 )
 sed -i '/^"'"$userna"'" l2tpd/d' /etc/ppp/chap-secrets
 sed -i '/^'"$userna"':\$1\$/d' /etc/ipsec.d/passwd
 sed -i "/^### $userna $exp/d" /var/lib/scrz-prem/data-user-l2tp
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 rm -f /etc/.maAsiss/db_reseller/${message_from_id}/user_l2tp/$userna
 rm -f /etc/.maAsiss/info-user-l2tp/$userna
 systemctl restart l2tpd > /dev/null 2>&1
@@ -6144,7 +6143,7 @@ $userna:$VPN_PASSWORD_ENC:xauth-psk
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-l2tp"
 
 local env_msg
@@ -6274,7 +6273,7 @@ cat >> /etc/ppp/chap-secrets <<EOF
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets*
+chmod 600 /etc/ppp/chap-secrets*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-pptp"
 local env_msg
 env_msg="━━━━━━━━━━━━━━━━━━━━━\n<b>         🔸 PPTP ACCOUNT 🔸 </b>\n━━━━━━━━━━━━━━━━━━━━━\n"
@@ -6312,7 +6311,7 @@ cat >> /etc/ppp/chap-secrets <<EOF
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets*
+chmod 600 /etc/ppp/chap-secrets*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-pptp"
 local env_msg
 env_msg="━━━━━━━━━━━━━━━━━━━━━\n<b>         🔸 PPTP ACCOUNT 🔸 </b>\n━━━━━━━━━━━━━━━━━━━━━\n"
@@ -6348,7 +6347,7 @@ cat >> /etc/ppp/chap-secrets <<EOF
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets*
+chmod 600 /etc/ppp/chap-secrets*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-pptp"
 local env_msg
 env_msg="━━━━━━━━━━━━━━━━━━━━━\n<b>         🔸 PPTP ACCOUNT 🔸 </b>\n━━━━━━━━━━━━━━━━━━━━━\n"
@@ -6387,7 +6386,7 @@ cat >> /etc/ppp/chap-secrets <<EOF
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets*
+chmod 600 /etc/ppp/chap-secrets*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-pptp"
 local env_msg
 env_msg="━━━━━━━━━━━━━━━━━━━━━\n<b>         🔸 PPTP ACCOUNT 🔸 </b>\n━━━━━━━━━━━━━━━━━━━━━\n"
@@ -6427,7 +6426,7 @@ func_del_pptp() {
         exp=$(grep -E "^### " /var/lib/scrz-prem/data-user-pptp | cut -d ' ' -f 3 )
         sed -i '/^"'"$userna"'" pptpd/d' /etc/ppp/chap-secrets
         sed -i "/^### $userna $exp/d" /var/lib/scrz-prem/data-user-pptp
-        chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+        chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
         datata=$(find /etc/.maAsiss/ -name $userna)
         for accc in "${datata[@]}"
         do
@@ -6448,7 +6447,7 @@ func_del_pptp() {
         exp=$(grep -E "^### " /var/lib/scrz-prem/data-user-pptp | cut -d ' ' -f 3 )
         sed -i '/^"'"$userna"'" pptpd/d' /etc/ppp/chap-secrets
         sed -i "/^### $userna $exp/d" /var/lib/scrz-prem/data-user-pptp
-        chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+        chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
         rm -f /etc/.maAsiss/db_reseller/${message_from_id}/user_pptp/$userna
         rm -f /etc/.maAsiss/info-user-pptp/$userna
         systemctl restart pptpd > /dev/null 2>&1
@@ -6507,7 +6506,7 @@ cat <<-EOF >/etc/.maAsiss/$userna.sh
 exp=\$(grep -E "^###" /var/lib/scrz-prem/data-user-pptp | cut -d ' ' -f 3 )
 sed -i '/^"'"$userna"'" pptpd/d' /etc/ppp/chap-secrets
 sed -i "/^### $userna $exp/d" /var/lib/scrz-prem/data-user-pptp
-chmod 900 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
+chmod 600 /etc/ppp/chap-secrets* /etc/ipsec.d/passwd*
 rm -f /etc/.maAsiss/db_reseller/${message_from_id}/user_pptp/$userna
 rm -f /etc/.maAsiss/info-user-pptp/$userna
 systemctl restart pptpd > /dev/null 2>&1
@@ -6526,7 +6525,7 @@ cat >> /etc/ppp/chap-secrets <<EOF
 EOF
 
 # Update file attributes
-chmod 900 /etc/ppp/chap-secrets*
+chmod 600 /etc/ppp/chap-secrets*
 echo -e "### $userna $exp">>"/var/lib/scrz-prem/data-user-pptp"
 
 local env_msg
@@ -7844,7 +7843,7 @@ env_msg+="OHP SSH : $OhpSSH\n"
 env_msg+="OHP Dropbear : $OhpDB\n"
 env_msg+="OHP OpenVPN : $OhpOVPN\n"
 env_msg+="Port Squid : $sqd\n"
-env_msg+="UDPGW : 7100-7600 \n"
+env_msg+="UDPGW : 7100-7900 \n"
 env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
 env_msg+="OpenVPN Config : http://$IPs:81/\n"
 env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
@@ -8366,7 +8365,7 @@ while :; do
                         env_msg+="OHP Dropbear : $OhpDB\n"
                         env_msg+="OHP OpenVPN : $OhpOVPN\n"
                         env_msg+="Port Squid : $sqd\n"
-                        env_msg+="UDPGW : 7100-7600 \n"
+                        env_msg+="UDPGW : 7100-7900 \n"
                         env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
                         env_msg+="OpenVPN Config : http://$IPs:81/\n"
                         env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
@@ -8422,7 +8421,7 @@ while :; do
                     rm /tmp/name-d >/dev/null 2>&1
                 else
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "⛔ Can't be more than 90 Days")" \
+                            --text "$(echo -e "⛔ Can't be more than 30 Days")" \
                             --parse_mode html
                         >$CAD_ARQ
                         break
