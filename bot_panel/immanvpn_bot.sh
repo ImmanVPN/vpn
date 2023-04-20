@@ -1544,7 +1544,7 @@ func_del_res() {
             rm /root/login-db-pid.txt > /dev/null 2>&1
             sed -i "/\b$_cli_rev\b/d" $Res_Token
             [[ -d /etc/.maAsiss/$_dirsts/$cek_res_token ]] && rm -rf /etc/.maAsiss/$_dirsts/$cek_res_token >/dev/null 2>&1
-            sed -i "/\b$cek_res_token\b/d" $User_Active
+            sed -i "/$cek_res_token/d" $User_Active
             ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                 --text "$(echo -e "✅ SUCCESSFULLY REMOVED ✅")" \
                 --parse_mode html
