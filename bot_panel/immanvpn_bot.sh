@@ -443,6 +443,7 @@ info_port() {
         portsqd=$(grep -w "Squid Proxy" /root/log-install.txt | awk '{print $5,$6}')
         portudpgw=$(grep -w "Badvpn" /root/log-install.txt | awk '{print $4}')
         portnginx=$(grep -w "Nginx" /root/log-install.txt | awk '{print $NF}')
+        slowdns=$(grep -w "SlowDNS" /root/log-install.txt | awk '{print $NF}')
         portwstls=$(grep -w "Vmess TLS" /root/log-install.txt | awk '{print $NF}')
         portws=$(grep -w "Vmess None TLS" /root/log-install.txt | awk '{print $NF}')
         portvlesstls=$(grep -w "Vless TLS" /root/log-install.txt | awk '{print $NF}')
@@ -475,6 +476,7 @@ info_port() {
         env_msg+="Squid Proxy : $portsqd\n"
         env_msg+="Badvpn : $portudpgw\n"
         env_msg+="Nginx : $portnginx\n"
+        env_msg+="SlowDNS : $slowdns\n"
         env_msg+="Vmess TLS : $portwstls\n"
         env_msg+="Vmess HTTP : $portws\n"
         env_msg+="Vless TLS : $portvlesstls\n"
@@ -3575,18 +3577,20 @@ res_menus() {
 unset menu_vless
 menu_vless=''
 ShellBot.InlineKeyboardButton --button 'menu_vless' --line 1 --text 'Add VLess' --callback_data '_add_vless'
-ShellBot.InlineKeyboardButton --button 'menu_vless' --line 1 --text 'Delete VLess' --callback_data '_delete_vless'
-ShellBot.InlineKeyboardButton --button 'menu_vless' --line 2 --text 'Create Trial VLess' --callback_data '_trial_vless'
-ShellBot.InlineKeyboardButton --button 'menu_vless' --line 2 --text 'Renew VLess' --callback_data '_renew_vless'
-ShellBot.InlineKeyboardButton --button 'menu_vless' --line 3 --text 'List Member VLess' --callback_data '_member_vless'
-ShellBot.InlineKeyboardButton --button 'menu_vless' --line 3 --text 'Check User Login VLess' --callback_data '_login_vless'
-ShellBot.InlineKeyboardButton --button 'menu_vless' --line 4 --text '🔙 Back 🔙' --callback_data '_gobackvless'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 2 --text 'Delete VLess' --callback_data '_delete_vless'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 3 --text 'Create Trial VLess' --callback_data '_trial_vless'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 4 --text 'Renew VLess' --callback_data '_renew_vless'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 5 --text 'List Member VLess' --callback_data '_member_vless'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 6 --text 'Check User Login VLess' --callback_data '_login_vless'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 7 --text 'List Bug Telco' --callback_data '_bug_telco'
+ShellBot.InlineKeyboardButton --button 'menu_vless' --line 8 --text '🔙 Back 🔙' --callback_data '_gobackvless'
 ShellBot.regHandleFunction --function add_vless --callback_data _add_vless
 ShellBot.regHandleFunction --function del_vless --callback_data _delete_vless
 ShellBot.regHandleFunction --function add_vless_trial --callback_data _trial_vless
 ShellBot.regHandleFunction --function renew_vless --callback_data _renew_vless
 ShellBot.regHandleFunction --function list_member_vless --callback_data _member_vless
 ShellBot.regHandleFunction --function check_login_vless --callback_data _login_vless
+ShellBot.regHandleFunction --function list_bug_telco --callback_data _bug_telco
 ShellBot.regHandleFunction --function admin_service_see --callback_data _gobackvless
 unset keyboardvless
 keyboardvless="$(ShellBot.InlineKeyboardMarkup -b 'menu_vless')"
@@ -3603,6 +3607,43 @@ ShellBot.regHandleFunction --function list_member_vless --callback_data _res_mem
 ShellBot.regHandleFunction --function menu_reserv --callback_data _res_gobackvless
 unset keyboardvlessres
 keyboardvlessres="$(ShellBot.InlineKeyboardMarkup -b 'res_menu_vless')"
+
+#========== BUG TELCO =========#
+
+list_bug_telco() {
+    [[ "${callback_query_from_id[$id]}" == "$Admin_ID" ]] || [[ "$(grep -wc ${callback_query_from_id} $User_Active)" != '0' ]] && {
+        ShellBot.editMessageText --chat_id ${callback_query_message_chat_id[$id]} \
+            --message_id ${callback_query_message_message_id[$id]} \
+            --text "SELECT AN OPTION BELOW:" \
+            --reply_markup "$(ShellBot.InlineKeyboardMarkup --button 'bugtelco_list')" \
+        return 0
+    }
+}
+
+unset bugtelco_list
+bugtelco_list=''
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 1 --text 'Digi X Langgan' --callback_data '_digi_xlanggan'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 1 --text 'Digi Booster' --callback_data '_digi_booster'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 2 --text 'Umobile Funz' --callback_data '_umobile_funz'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 2 --text 'Maxis Freeze' --callback_data '_maxis_freeze'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 3 --text 'Maxis Sabah' --callback_data '_maxis_sabahp'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 3 --text 'Yes X Langgan' --callback_data '_yes_xlanggan'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 4 --text 'Unifi X Langgan' --callback_data ''_unifi_xlanggan'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 5 --text 'Celcom X Langgan' --callback_data ''_celcom_xlanggan'
+ShellBot.InlineKeyboardButton --button 'bugtelco_list' --line 6 --text 'Lima Telco Booster' --callback_data ''_telco_booster'
+ShellBot.regHandleFunction --function digi_xl --callback_data _digi_xlanggan
+ShellBot.regHandleFunction --function digi_bs --callback_data _digi_booster
+ShellBot.regHandleFunction --function umo_funz --callback_data _umobile_funz
+ShellBot.regHandleFunction --function maxis_frze --callback_data _maxis_freeze
+ShellBot.regHandleFunction --function maxis_sbhp --callback_data _maxis_sabahp
+ShellBot.regHandleFunction --function yes_xl --callback_data _yes_xlanggan
+ShellBot.regHandleFunction --function unifi_xl --callback_data _unifi_xlanggan
+ShellBot.regHandleFunction --function celcom_xl --callback_data _celcom_xlanggan
+ShellBot.regHandleFunction --function lima_telco_list --callback_data _telco_booster
+unset keyboardvless
+keyboardvless="$(ShellBot.InlineKeyboardMarkup -b 'bugtelco_list')"
+
+digi_xl() {     [[ "${callback_query_from_id[$id]}" == "$Admin_ID" ]] || [[ "$(grep -wc ${callback_query_from_id} $User_Active)" != '0' ]] && {         ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} \               --message_id ${callback_query_message_message_id[$id]}         ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \             --text "👤 CREATE USER VLess 👤\n\nUsername:" \             --reply_markup "$(ShellBot.ForceReply)"     } || {         ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \             --text "⛔ ACCESS DENIED ⛔"         return 0     } }  func_add_vless() { [[ "${message_from_id[$id]}" != "$Admin_ID" ]] && {     [[ -f /etc/.maAsiss/.cache/DisableOrderVLESS ]] && {             ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \                     --text "⛔ Disable Order VLESS" \                     --parse_mode html             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \                    --text "Func Error Do Nothing" \                    --reply_markup "$(ShellBot.ForceReply)"             return 0     } }
 
 #====== ALL ABOUT WIREGUARD =======#
 
